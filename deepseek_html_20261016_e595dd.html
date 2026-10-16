@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Маршрут «Алексин на полях сражений»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* Все стили остаются без изменений */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0b1a2e;
+            padding: 20px;
+            background-image: url('https://sun9-75.vkuserphoto.ru/s/v1/ig2/A_ydfeDlp3pOwRbFqBbXZWUoPoCkAZR0YzNYx9QFDoy_Nuh-qlODejHA-dZGdEeAcTUweq-xA0QlOZAhZHXUggBt.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 30px 30px 40px;
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .header-logo {
+            height: 60px;
+            width: auto;
+            flex-shrink: 0;
+            border-radius: 0;
+        }
+        .page-title {
+            font-weight: 700;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            color: #0b1a2e;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+            margin-bottom: 0;
+        }
+
+        .page-sub {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 28px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 16px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 28px;
+            background: #eef2f6;
+            padding: 6px;
+            border-radius: 16px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease 0.35s forwards;
+        }
+        .nav-tab {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            background: transparent;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .nav-tab:hover {
+            color: #0b1a2e;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .nav-tab.active {
+            background: #ffffff;
+            color: #0b1a2e;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .section {
+            display: none;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        .section.active {
+            display: block;
+        }
+
+        .about-section, .sources-section {
+            padding: 20px 24px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border-left: 4px solid #3b82f6;
+        }
+        .about-heading, .sources-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+        }
+        .about-heading span, .sources-heading span {
+            color: #3b82f6;
+        }
+        .about-content, .sources-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #1e293b;
+        }
+        .about-content p, .sources-content p {
+            margin-bottom: 12px;
+        }
+        .about-content p:last-child, .sources-content p:last-child {
+            margin-bottom: 0;
+        }
+        .sources-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sources-content li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+        .sources-content li::before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        .map-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 40px;
+            border: 1px solid #e9edf2;
+        }
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 650px;
+            border: 0;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .info-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+        .info-heading span {
+            color: #3b82f6;
+        }
+
+        .route-control {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-start-route {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 16px;
+            background: #3b82f6;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: opacity 0.6s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .btn-start-route:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        .btn-start-route.hidden {
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .route-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .route-actions.hidden {
+            display: none;
+        }
+
+        .btn-route-action {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            background: #e9edf2;
+            color: #1e293b;
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+        .btn-route-action:hover {
+            transform: translateY(-2px);
+        }
+        .btn-route-action.save {
+            background: #22c55e;
+            color: white;
+        }
+        .btn-route-action.save:hover {
+            background: #16a34a;
+        }
+        .btn-route-action.reset {
+            background: #ef4444;
+            color: white;
+        }
+        .btn-route-action.reset:hover {
+            background: #dc2626;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #eef2f6;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background-color: #e9edf2;
+        }
+
+        .card-body {
+            padding: 20px 20px 24px;
+        }
+        .card-body h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0b1a2e;
+        }
+        .card-body p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .card-body .tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #3b82f6;
+            background: #eff6ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+
+        .card .visited-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #22c55e;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 40px;
+            display: none;
+            letter-spacing: 0.02em;
+            pointer-events: none;
+        }
+        .card.visited .visited-badge {
+            display: block;
+        }
+        .card.visited {
+            border-color: #22c55e;
+        }
+
+        .finish-wrapper {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn-finish-route {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 60px;
+            background: #94a3b8;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: not-allowed;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-finish-route.active {
+            background: #ef4444;
+            cursor: pointer;
+            opacity: 1;
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+        }
+        .btn-finish-route.active:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid #e9edf2;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+        .footer-note a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+        .footer-note .footer-line {
+            margin: 2px 0;
+        }
+
+        .btn-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+            transition: transform 0.2s, opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .btn-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .btn-top:hover {
+            transform: scale(1.1);
+            background: #2563eb;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 95vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            line-height: 1;
+            color: #1e293b;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            padding: 0 8px;
+            z-index: 10;
+        }
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        .modal-slider {
+            position: relative;
+            width: 100%;
+            max-height: 60vh;
+            background: #f1f5f9;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-track {
+            position: relative;
+            width: 100%;
+            max-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-track img {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            display: block;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .slider-track img.fade-out {
+            opacity: 0;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            z-index: 5;
+            user-select: none;
+        }
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .slider-btn.prev {
+            left: 12px;
+        }
+        .slider-btn.next {
+            right: 12px;
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            padding: 0;
+        }
+        .slider-dot.active {
+            background: #3b82f6;
+        }
+        .slider-dot:hover {
+            background: #9ca3af;
+        }
+        .slider-dot.active:hover {
+            background: #2563eb;
+        }
+
+        .modal-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0b1a2e;
+        }
+        .modal-text p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+        .modal-text strong {
+            color: #0b1a2e;
+        }
+
+        .modal-visit-btn {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 12px auto 0;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            background: #e9edf2;
+            color: #1e293b;
+            text-align: center;
+        }
+        .modal-visit-btn.visited {
+            background: #22c55e;
+            color: white;
+        }
+        .modal-visit-btn.visited:hover {
+            background: #16a34a;
+        }
+        .modal-visit-btn:not(.visited):hover {
+            background: #d1d5db;
+        }
+
+        .celebration-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            pointer-events: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .celebration-overlay.active {
+            display: flex;
+        }
+        .celebration-text {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 60px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            pointer-events: auto;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 90%;
+        }
+        .celebration-text h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0b1a2e;
+            margin-bottom: 12px;
+        }
+        .celebration-text h2 span {
+            color: #ef4444;
+        }
+        .celebration-text p {
+            font-size: 1.2rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .celebration-text .close-celebration {
+            margin-top: 20px;
+            padding: 10px 32px;
+            border: none;
+            border-radius: 40px;
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: background 0.2s;
+        }
+        .celebration-text .close-celebration:hover {
+            background: #2563eb;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1999;
+        }
+
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .container {
+                padding: 16px 12px 24px;
+            }
+            .page-title {
+                font-size: 1.5rem;
+            }
+            .header-logo {
+                height: 40px;
+            }
+            .header-row {
+                gap: 10px;
+            }
+            .map-wrapper iframe {
+                height: 350px;
+            }
+            .info-heading {
+                font-size: 1.3rem;
+            }
+            .about-heading, .sources-heading {
+                font-size: 1.3rem;
+            }
+            .about-section, .sources-section {
+                padding: 12px 14px;
+            }
+            .nav-tab {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+            .btn-top {
+                width: 44px;
+                height: 44px;
+                font-size: 1.4rem;
+                bottom: 16px;
+                right: 16px;
+            }
+            .btn-start-route {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            .btn-finish-route {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+            .btn-route-action {
+                min-width: 80px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+            .card-img {
+                height: 150px;
+            }
+            .card-body h3 {
+                font-size: 1rem;
+            }
+            .card-body p {
+                font-size: 0.85rem;
+            }
+            .card-body .tag {
+                font-size: 0.65rem;
+                padding: 2px 8px;
+            }
+            .modal-slider {
+                max-height: 30vh;
+            }
+            .slider-track img {
+                max-height: 30vh;
+            }
+            .modal-text h3 {
+                font-size: 1.2rem;
+            }
+            .modal-text p {
+                font-size: 0.9rem;
+            }
+            .modal-visit-btn {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid {
+                gap: 12px;
+            }
+            .card-img {
+                height: 120px;
+            }
+            .card-body {
+                padding: 12px 12px 16px;
+            }
+            .page-title {
+                font-size: 1.3rem;
+            }
+            .route-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .nav-tabs {
+                flex-direction: row;
+            }
+            .nav-tab {
+                font-size: 0.8rem;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="top">
+
+        <div class="header-row">
+            <h1 class="page-title">Маршрут «Алексин на полях сражений»</h1>
+            <img class="header-logo" src="https://sun9-29.vkuserphoto.ru/s/v1/ig2/OEIVB-BFmkDs8jPWPIIBt5twS9dqBMpmG2D6oAlTxPghYi9DcHb5pTBOTzDV-53XQzn3yCgMr1IBl4B6gXZwNeG7.jpg?quality=95&as=32x40,48x60,72x90,108x135,160x200,174x217&from=bu&u=AEuh4mODPiB-J0RV4PQgd1A_1XCqimgTcOj6bkRZoPc&cs=174x0" alt="Логотип" />
+        </div>
+
+        <div class="page-sub">
+            Карта памятных мест и информация о военно-историческом наследии
+        </div>
+
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" data-section="route">Маршрут</button>
+            <button class="nav-tab" data-section="about">О проекте</button>
+            <button class="nav-tab" data-section="sources">Источники</button>
+        </div>
+
+        <div class="section active" id="sectionRoute">
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/d/u/1/embed?mid=18RZ8qF40kZqPKOT-NF4PH8reF1Oc-MQ&ehbc=2E312F&noprof=1" 
+                    title="Карта сражений под Алексином" 
+                    allowfullscreen 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="info-section">
+                <h2 class="info-heading">
+                    <span>•</span> Остановки по маршруту
+                </h2>
+                <div class="route-control">
+                    <button class="btn-start-route" id="btnStart">🚀 Начать маршрут</button>
+                    <div class="route-actions hidden" id="routeActions">
+                        <button class="btn-route-action save" id="btnSave">💾 Сохранить</button>
+                        <button class="btn-route-action reset" id="btnReset">🔄 Сбросить</button>
+                    </div>
+                </div>
+                <div class="cards-grid" id="cardsGrid"></div>
+                <div class="finish-wrapper">
+                    <button class="btn-finish-route" id="btnFinish" disabled>🏁 Завершить маршрут</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="sectionAbout">
+            <div class="about-section">
+                <h2 class="about-heading"><span>•</span> О проекте</h2>
+                <div class="about-content">
+                    <p>«Алексин на полях сражений» — это краеведческий проект, посвящённый военной истории города Алексина. Он охватывает период от основания пограничной крепости в XIII веке до участия алексинцев в специальной военной операции. Проект создан на основе архивных документов, летописных свидетельств, материалов Алексинского городского музея и краеведческих исследований.</p>
+                    <p>Практическим воплощением проекта стал путеводитель по ратным местам Алексина — маршрут, который объединяет девять ключевых точек, связанных с важнейшими событиями военной истории города. Это не просто перечень памятников и мемориалов, а живое путешествие по местам, где когда-то гремели сражения, решалась судьба не только города, но и всей России. Каждая остановка маршрута снабжена исторической справкой, описанием того, что можно увидеть сегодня, и практической информацией для посетителей. Маршрут представляет собой пешую прогулку длительностью от 3 до 6 часов.</p>
+                    <p>Главная цель проекта — сохранить и донести до современников правду о ратном подвиге Алексина, города, чья история навсегда вписана в летопись нашей страны. Путеводитель позволяет увидеть эту историю не только в учебниках и архивах, но и на местности — там, где она создавалась, где люди стояли насмерть за свою землю. Сохраняя память о героях и местах их подвигов, мы сохраняем связь времён и передаём будущим поколениям главный урок истории: мир и свобода достаются дорогой ценой.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="sectionSources">
+            <div class="sources-section">
+                <h2 class="sources-heading"><span>•</span> Источники</h2>
+                <div class="sources-content">
+                    <p>Проект «Алексин на полях сражений» создан на основе следующих источников:</p>
+                    <ul>
+                        <li><strong>Архивные документы</strong> — фонды Государственного архива Тульской области, материалы по истории Алексинского уезда XVI–XX вв.</li>
+                        <li><strong>Летописные свидетельства</strong> — Никоновская летопись, Воскресенская летопись, записи о событиях 1472 года.</li>
+                        <li><strong>Материалы Алексинского художественно-краеведческого музея</strong> — экспозиции, фондовые коллекции, научные каталоги.</li>
+                        <li><strong>Краеведческие исследования</strong> — работы тульских и алексинских историков: В.Н. Ашуркова, С.Д. Ошевского, И.Ф. Афремова, В.М. Понамарёва, а также современные публикации в сборниках «Алексинская старина».</li>
+                        <li><strong>Воспоминания участников событий</strong> — мемуары ветеранов Великой Отечественной войны, записи устных рассказов старожилов города.</li>
+                        <li><strong>Периодическая печать</strong> — статьи из газет «Алексинские вести», «Коммунар» (1940–1960-е гг.).</li>
+                    </ul>
+                    <p style="margin-top: 12px;">Фотографии школ взяты из открытых источников с указание авторства. Остальные фотографии, представленные на сайте, сделаны автором проекта в ходе экспедиций по местам боевой славы Алексина в 2025–2026 годах.</p>
+                    <p>Мы благодарим сотрудников Алексинского музея, архивистов и краеведов за помощь в сборе материалов, которые были использованы при создании проекта.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <div class="footer-line">Проект "Алексин на полях сражений"</div>
+            <div class="footer-line">© 2025–2026 Кирилл Богучаров • 📧 <a href="mailto:kirillbogucharov20@mail.ru">Обратная связь: kirillbogucharov20@mail.ru</a></div>
+        </div>
+
+    </div>
+
+    <button class="btn-top" id="btnTop" title="Наверх">↑</button>
+
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-slider">
+                <button class="slider-btn prev" id="sliderPrev" onclick="changeImage(-1)">‹</button>
+                <div class="slider-track" id="sliderTrack">
+                    <img id="modalImage" src="" alt="" />
+                </div>
+                <button class="slider-btn next" id="sliderNext" onclick="changeImage(1)">›</button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+            <div id="modalText" class="modal-text">
+                <h3 id="modalTitle"></h3>
+                <div id="modalBody"></div>
+                <button class="modal-visit-btn" id="modalVisitBtn">Отметить как посещённое</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="celebration-overlay" id="celebrationOverlay">
+        <div class="celebration-text">
+            <h2>🎉 Поздравляем! 🎉</h2>
+            <p>Вы прошли весь маршрут «Алексин на полях сражений»<br>и посетили все <strong>9 памятных мест</strong>!</p>
+            <p style="margin-top: 8px; font-size: 1rem; color: #64748b;">Теперь вы знаете историю Алексина — города,<br>чьи герои навсегда вписаны в летопись страны.</p>
+            <button class="close-celebration" onclick="closeCelebration()">Продолжить</button>
+        </div>
+    </div>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <script>
+        // ======== ДАННЫЕ ОСТАНОВОК ========
+        const stopsData = [
+            // 1. Ильинская гора
+            {
+                id: 1,
+                title: 'Ильинская гора – место битвы 1472 г.',
+                shortDesc: 'Легендарная высота, где русские войска отразили нашествие хана Ахмата.',
+                tag: 'Битва 1472',
+                images: [
+                    'https://sun9-34.vkuserphoto.ru/s/v1/ig2/JQ1o6qHQ438Grs8NOlsmKqj_0wLPfBxmmTCYYSPHFXl38Vnr6y7MBx9mUxhoTWzx_y7XSslDZqvYHSDa3svmMD5N.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x106,240x160,360x239,480x319,540x359,640x425,720x479,1080x718,1280x851,1440x957,1954x1299&from=bu&u=5B_-nNyXEXeBxmWBENfjlRi2xH1f_xrYogmv8aRhGYA&cs=1954x0',
+                    'https://sun9-20.vkuserphoto.ru/s/v1/ig2/1rAwQZFuwRFTUJkVKIrBU1RZmLi5sTmDwCSiOJvwf7VlnDoSkmKbOoSSJRVkvodNWw5aOPIi2dYYgmZWX1anzAZH.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-85.vkuserphoto.ru/s/v1/ig2/eLWz2IIlTUYeMAQdJaPUFsOWLuD0KxSyuhAbOe-Yq0nVXD-4xfpgrxkhGgLbMGWPfMGCF8-nOjhbiush000NVa-i.jpg?quality=95&crop=0,0,2560,1707&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-57.vkuserphoto.ru/s/v1/ig2/QeOyPB12YaVJJuFcMBX97d_2_iTriuzSKq9qyfl-dOJ1s-GytAlMfQV26k4xE8dK_hEEKusZQF4J_--Hz6vH2yYq.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,1080x1621,1280x1921,1440x2161,1706x2560&from=bu&cs=1706x0'
+                ],
+                history: 'В 1472 году сюда к деревянной крепости Алексина подошли полчища золотоордынского хана Ахмата. В городе «людей мало бяше», но защитники два дня — 29 и 30 июля — мужественно сдерживали штурмы. Ордынцы сожгли крепость дотла, но эти два дня стали решающими: они дали время московскому войску собраться на противоположном берегу Оки. Увидев «многие полки великого князя, аки море колеблющееся», хан Ахмат не решился на переправу и отступил.',
+                whatSee: 'На Ильинской горе установлен памятный камень в честь защитников алексинской крепости (открыт в 2012 году). С высокого берега открывается панорама Оки — той самой реки, через которую пытались переправиться войска Ахмата.'
+            },
+            // 2. Новая крепость
+            {
+                id: 2,
+                title: '«Новая» крепость – возрождение после 1472 года',
+                shortDesc: 'Крепость, отстроенная после разорения, стала символом стойкости.',
+                tag: 'Битва 1472, ВОВ',
+                images: [
+                    'https://sun9-55.vkuserphoto.ru/s/v1/ig2/CoXJ3G8GzFxex_Cf1TsVoXJg6AQIV9sszA5epFN8NjSbzabm7ZoapEwWVjD_g1sfrrKS0YLc8jC4VcdsSXbEx16N.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-5.vkuserphoto.ru/s/v1/ig2/8Fm_AwRqW7vG5by0JiMdQZPyvr9F4o56gU0upfuJLZr-d0SCe3TdQY_t-tBKQJofnTLXPbDXaVJeGihjKhWGIXOM.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-2.vkuserphoto.ru/s/v1/ig2/Z_j11NGVDtFmbzb3b1ATlRlSDeMdGPg12nPDLT4AvI64HdhZOoYKLjHHZD3A53DmptjUihI1gzBnu5w70dV72Vxc.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-22.vkuserphoto.ru/s/v1/ig2/HKgUCjvt1Ajiyc_-tfxbaHnPVFlDOWpz86XZjmWIJYmjecwtb7CQtCc4v8SearfUIgk31NcyrBX2BJWj6SOxbq04.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-25.vkuserphoto.ru/s/v1/ig2/IETRnd1kcadZk0xJg8envjKJiMRXfC-tMRCBD0krAxX0DtDr-Ok7Toz1TvL02nghQRN5nSH4RnZTt1EfP_is1MX1.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0'
+                ],
+                history: 'После того как старая крепость на Ильинской горе была сожжена дотла, оставшиеся в живых горожане не стали восстанавливать её на прежнем месте. Они перенесли город на две версты ниже по течению Оки — на треугольный мыс, образованный обрывистым берегом реки и её притоком Мордовкой. В 1474 году здесь была построена новая деревянная дубовая крепость с башнями. Валом служила высокая каменистая гора с утесом, поперёк которой вырыли рвы.',
+                whatSee: 'Сегодня это место — исторический центр Алексина, где на высоком берегу Оки сохранилась атмосфера старого купеческого города. Здесь можно посетить Свято-Никольский храм и Алексинский художественно-краеведческий музей.'
+            },
+            // 3. Берега Оки — добавлено новое фото
+            {
+                id: 3,
+                title: 'Берега Оки – рубежи Смутного времени',
+                shortDesc: 'Вдоль реки проходили оборонительные линии в период польско-литовской интервенции.',
+                tag: 'Смута',
+                images: [
+                    'https://sun9-17.vkuserphoto.ru/s/v1/ig2/nexy0l6kPFWxVDIbXcNMNrpqHZHNgv1tTxPQTJupb2YqufTiseS0_7ztUFNmbm3TA-T7xLE_rCz1F2y8EBtWjkxN.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-47.vkuserphoto.ru/s/v1/ig2/5_WR55i3-fH1CVTk7tOGkLWJ7cFqYLWy3LRlLKgIjJngYsoOKdZb1Hv6x4JK9Yvj5eMEH_P5IhuieQNWer7pYz11.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x426,720x480,1080x720,1280x853&from=bu&cs=1280x0',
+                    'https://sun9-61.vkuserphoto.ru/s/v1/ig2/fnKUSQarr5xx1TPn4F-tczW08wbAM2He_WJc531YHemTjfuSsQvLzCF3M27fD-Y9ignVesRR4Y49YwsSrYK4wTlSdyazWA.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&u=A8FZn8MSHxsRGQVe6qiMmPhX2RVhog_n0PiPcdmYbRY&cs=2560x0'
+                ],
+                history: 'В начале XVII века Алексин стал ареной ожесточённых боёв Смутного времени. В 1606 году алексинский воевода Кологривов перешёл на сторону восставших крестьян Ивана Болотникова. В 1607 году отряд князя Воротынского с боем взял Алексин. Зимой 1608 года город стал местом сбора ратных сил против Лжедмитрия II — в битве под Москвой погибли 33 алексинца. В 1614 году под Алексином воевода Куракин разбил отряд польского гетмана Лисовского.',
+                whatSee: 'Берега Оки в черте города — те самые рубежи, где в Смутное время проходили бои. С высокого берега открывается вид на реку, по которой когда-то двигались войска самозванцев и интервентов.'
+            },
+            // 4. Сквер
+            {
+                id: 7,
+                title: 'Памятный сквер участникам локальных войн',
+                shortDesc: 'Сквер с мемориалом воинам, павшим в Афганистане, Чечне и других конфликтах.',
+                tag: 'Локальные конфликты',
+                images: [
+                    'https://sun9-45.vkuserphoto.ru/s/v1/ig2/RYf9b_ZG340iiMZdIw9SArUBXSHb-Rl9DgEZB4VqKybU-DFtJHfwxWdW06cwNHdjW8qEDan0kfRL3EVkdOchK55q.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&u=Exz0B-tAToubFE9JBGO0MaS46SJx91kYT7Rw8JogCkI&cs=2560x0',
+                    'https://sun9-36.vkuserphoto.ru/s/v1/ig2/KhFzl5gWb1Xh9CstVPzEx448rhG9nHnLILZGSNBRiIJwO7fVhkI3vFeJ18JVqz8OkOraTZRZBswbcIm-ZKe1YZEF.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0'
+                ],
+                history: 'Около полутора тысяч алексинцев в разные годы принимали участие в 16 локальных войнах и вооружённых конфликтах — во Вьетнаме, Мозамбике, Конго, Египте, Сирии, на Кубе, в Афганистане, Анголе, Югославии и других странах. Десять алексинцев не вернулись домой.',
+                whatSee: 'В центре сквера — боевая машина пехоты БМП-1 на постаменте, мемориальная доска с надписью «Алексинцам – участникам локальных войн и военных конфликтов», баннер с фотографиями участников и картой «горячих точек».'
+            },
+            // 5. Троицкое кладбище
+            {
+                id: 6,
+                title: 'Троицкое кладбище – захоронения героев Первой мировой войны',
+                shortDesc: 'Братские могилы солдат Российской императорской армии.',
+                tag: 'Первая мировая, ВОВ',
+                images: [
+                    'https://sun9-87.vkuserphoto.ru/s/v1/ig2/5RfoFymAXstgE9E1LD9plX7tvNcvPgv9KM_lx65vdumagE_q85iJvj73yrNiyZJLZJdeedtzxd_pQbtWZ4NJ7KO5.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-41.vkuserphoto.ru/s/v1/ig2/2o2d-loiXro0ziBnnlteKm8JOVD4jtlC6IQYhjSpew7DRelAGWm9RlP7zglcg_N_ugFlAQa4AYo26DrSoZaB5Hf2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0',
+                    'https://sun9-42.vkuserphoto.ru/s/v1/ig2/urq9fHUsh97RcWD42M9UOalKvsv7-1nC85DUxQO23ftAx2zvoGQevLOChvY0xh2eLZt2PbZfQ_UCEs5w5dr7M4by.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-86.vkuserphoto.ru/s/v1/ig2/mtsAZeazefLv8BIkNyMIqJbJ6ZptE3i_reB7F3xbnc9VBdZfWy-7Sq-mMl_RunAPVimAghRRsAa5bvAv0t5eI8RE.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0'
+                ],
+                history: 'В годы Первой мировой войны в Алексине было открыто 6 лазаретов. В 1915 году на Троицком кладбище выделили отдельный участок для умерших от ран воинов. Здесь погребено 12 человек: 3 прапорщика и 9 нижних чинов.',
+                whatSee: 'Единственное в Тульской области место захоронения героев Первой мировой войны. Сохранился общий памятник, сооружённый в 1915 году, и бетонные надгробия с прорезным крестом посередине.'
+            },
+            // 6. Школа №3
+            {
+                id: 9,
+                title: 'Школа №3 – место памяти героев СВО',
+                shortDesc: 'Мемориальная доска и стенд с фотографиями героев-выпускников.',
+                tag: 'СВО',
+                images: [
+                    'https://sun9-15.vkuserphoto.ru/s/v1/ig2/5Myu4Q6V2on7NIN8k0OwZ5Se_QxBuePx7L_DrQJoEcx6DPv5bex5CorSSWTXvzmfnAxP2PNkxtfmBLqlp_YX60Tg.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&u=Et2z6ulTeysaiq8nWPDb3x6W-k3Um2pk8-Be69CLLy8&cs=2560x0',
+                    'https://sun9-9.vkuserphoto.ru/s/v1/ig2/-Qf3Vv56X0dlOe3wX5GKMwzfUw1WbeeCNqtdRxLRWblvwQkkmu6xc98nkbg0VxQBzdxlNF-fkD4Fc8a4ZYI2qpsC.jpg?quality=95&as=32x57,48x85,72x128,108x192,160x284,240x427,360x640,480x853,540x960,640x1138,720x1280&from=bu&cs=720x0'
+                ],
+                history: 'Сержант Сергей Бережков погиб во время проведения специальной военной операции. За мужество и героизм награждён орденом Мужества посмертно.',
+                whatSee: 'На фасаде школы №3 (микрорайон Бор) установлена мемориальная доска в честь сержанта Сергея Бережкова. Торжественная церемония открытия состоялась 5 июня 2023 года.'
+            },
+            // 7. Школа №1
+            {
+                id: 8,
+                title: 'Школа №1 – место памяти героев СВО',
+                shortDesc: 'Мемориальная доска и стенд с фотографиями героев-выпускников.',
+                tag: 'СВО',
+                images: [
+                    'https://sun9-10.vkuserphoto.ru/s/v1/ig2/0n-yAttxBMkNfCZ3_YiB4Tws-Z0gH0TElhGbKyL8dslXetCHKBktdEjU1RM9ABVG3HyQydksD6cLWPKJfAtwFzRJ.jpg?quality=96&as=32x23,48x35,72x52,108x78,160x116,240x174,360x261,480x348,540x391,640x463,720x521,1080x782,1280x927&from=bu&u=R3KmimJ3Xxtakz3ng7Rqy_3xhDSAjsKPltqNijCQArg&cs=1280x0',
+                    'https://sun9-70.vkuserphoto.ru/s/v1/ig2/c2HCmk0QT6FHjPfWgzPAm6vyiE5jSk3U6z9e-lxrN_XsNM2VjpWNvQIJo-gXoOuKcmlNa8XGwQlR6F5pmtSldrw9.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0'
+                ],
+                history: 'С началом специальной военной операции алексинцы вновь встали на защиту Родины. Многие заключили контракты и отправились на передовую. Гвардии лейтенант Сергей Гилунг и гвардии рядовой Александр Орешкин героически погибли при выполнении воинского долга.',
+                whatSee: 'На фасаде школы №1 установлены мемориальные доски в честь Сергея Гилунга и Александра Орешкина. Они были открыты 3 сентября 2024 года.'
+            },
+            // 8. Переправа
+            {
+                id: 4,
+                title: 'Переправа через Оку – 1812 год',
+                shortDesc: 'Историческая переправа во время Отечественной войны 1812 года.',
+                tag: '1812',
+                images: [
+                    'https://sun9-43.vkuserphoto.ru/s/v1/ig2/UQzShe-Ww5JaKhS7CUeQVcyYyDWENDEKEpUxKE5tG9utS-KdhX4fY_mPdnya7HpP7uPWJdznuja9DQWTFBVGY-A0.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x426,720x480,1080x720,1280x853,1440x960,2560x1706&from=bu&cs=2560x0'
+                ],
+                history: 'В Отечественную войну 1812 года Алексин не стал местом сражений, но сыграл ключевую роль в переброске войск. За короткий срок алексинцы построили через Оку мост из 25 лодок и барж. За одни сутки по этому мосту переправили 18 000 солдат дивизии князя Урусова.',
+                whatSee: 'Берег Оки в районе исторической переправы — место, где в 1812 году стоял мост из лодок и барж. С берега открывается панорама реки.'
+            },
+            // 9. Мемориал Славы
+            {
+                id: 5,
+                title: 'Мемориал Славы',
+                shortDesc: 'Главный мемориал города с Вечным огнём.',
+                tag: 'ВОВ',
+                images: [
+                    'https://sun9-23.vkuserphoto.ru/s/v1/ig2/ldPgM57WuoVVC2ARliBSRLj7v0b8kW71_-33MXS7zLrGXfJdTY5U-82MHS6axMWjuEB5YAzXYj_O4xV9ec2YNd4w.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-78.vkuserphoto.ru/s/v1/ig2/JJ8dFUdwL7ULzZfu-JzkVMYYNYG7dKilCxnudg3VdBiV24XE5iBuvNuazItLw1MTRSjJ4M-6I6HYjpBCbONLx9lS.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-19.vkuserphoto.ru/s/v1/ig2/cTR9RxAbTXdP7lVwIJNPyIuYCzlc_Z8rrZipEmIZrcjg-UNJtANG8FuXQYbJD6aAZ7ugEzMnz6uBooYg8KO7St0M.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-53.vkuserphoto.ru/s/v1/ig2/QxofVvLJbdj9xCaRBqAcxW8R-qgMGJP48zbqzh4hhdQYS0i2-_Rh_cruDilrR5cnU1d3-VdIgBPZ1V8u9CVL21b_.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-62.vkuserphoto.ru/s/v1/ig2/BGhHJopHcIf4bl9CpC_BLRcIAyBgqCksLELl2HLbtUm2nDePqbL1JCpsV9J_aWSS0x8g7oxWuzE3NIXVLUqIiLg4.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0',
+                    'https://sun9-45.vkuserphoto.ru/s/v1/ig2/z2qcRdRdzS8iK65alh1UX8N77UyyDXHls5vAazoKl5VWm3t2pxLSLAXRTeW6EmWNIrwaFNGMH8pSrENnWXRShVlZ.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x853,1440x960,2560x1707&from=bu&cs=2560x0'
+                ],
+                history: 'Мемориал Победы в микрорайоне Высокое — главный памятник города Алексина, посвящённый воинам, павшим в годы Великой Отечественной войны. Это место братского захоронения, куда в 1966 году были перенесены останки 280 советских воинов из 14 населённых пунктов Алексинского района.',
+                whatSee: 'Мемориальный комплекс на площади Победы является центральным местом проведения всех памятных мероприятий города. В его состав входят скульптурная композиция, Вечный огонь, братская могила, памятные доски.'
+            }
+        ];
+
+        // ======== СОСТОЯНИЕ ========
+        let visited = new Array(stopsData.length).fill(false);
+        let routeStarted = false;
+        let currentModalIndex = 0;
+
+        // ======== ДОМ-ЭЛЕМЕНТЫ ========
+        const grid = document.getElementById('cardsGrid');
+        const btnStart = document.getElementById('btnStart');
+        const btnFinish = document.getElementById('btnFinish');
+        const routeActions = document.getElementById('routeActions');
+        const btnSave = document.getElementById('btnSave');
+        const btnReset = document.getElementById('btnReset');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const sectionRoute = document.getElementById('sectionRoute');
+        const sectionAbout = document.getElementById('sectionAbout');
+        const sectionSources = document.getElementById('sectionSources');
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalVisitBtn = document.getElementById('modalVisitBtn');
+        const sliderDots = document.getElementById('sliderDots');
+        const btnTop = document.getElementById('btnTop');
+        const celebrationOverlay = document.getElementById('celebrationOverlay');
+
+        // ======== РАБОТА С LOCALSTORAGE ========
+        function loadState() {
+            try {
+                const saved = localStorage.getItem('routeState');
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    routeStarted = state.started || false;
+                    if (state.visited && state.visited.length === stopsData.length) {
+                        visited = state.visited;
+                    }
+                    return true;
+                }
+            } catch (e) {}
+            return false;
+        }
+
+        function saveState() {
+            localStorage.setItem('routeState', JSON.stringify({
+                started: routeStarted,
+                visited: visited
+            }));
+        }
+
+        function resetState() {
+            localStorage.removeItem('routeState');
+            visited = new Array(stopsData.length).fill(false);
+            routeStarted = false;
+            btnStart.classList.remove('hidden');
+            routeActions.classList.add('hidden');
+            updateUI();
+        }
+
+        // ======== ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ========
+        function updateUI() {
+            document.querySelectorAll('.card').forEach((card, idx) => {
+                if (visited[idx]) {
+                    card.classList.add('visited');
+                } else {
+                    card.classList.remove('visited');
+                }
+            });
+
+            if (modalOverlay.classList.contains('active')) {
+                const isVisited = visited[currentModalIndex];
+                modalVisitBtn.textContent = isVisited ? 'Посещено ✓' : 'Отметить как посещённое';
+                modalVisitBtn.classList.toggle('visited', isVisited);
+            }
+
+            const allVisited = visited.every(v => v === true);
+            if (allVisited) {
+                btnFinish.disabled = false;
+                btnFinish.classList.add('active');
+            } else {
+                btnFinish.disabled = true;
+                btnFinish.classList.remove('active');
+            }
+
+            if (routeStarted) {
+                btnStart.classList.add('hidden');
+                routeActions.classList.remove('hidden');
+            } else {
+                btnStart.classList.remove('hidden');
+                routeActions.classList.add('hidden');
+            }
+
+            saveState();
+        }
+
+        // ======== НАВИГАЦИЯ ========
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                navTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const target = this.dataset.section;
+                if (target === 'route') {
+                    sectionRoute.classList.add('active');
+                    sectionAbout.classList.remove('active');
+                    sectionSources.classList.remove('active');
+                } else if (target === 'about') {
+                    sectionAbout.classList.add('active');
+                    sectionRoute.classList.remove('active');
+                    sectionSources.classList.remove('active');
+                } else if (target === 'sources') {
+                    sectionSources.classList.add('active');
+                    sectionRoute.classList.remove('active');
+                    sectionAbout.classList.remove('active');
+                }
+            });
+        });
+
+        // ======== ИНИЦИАЛИЗАЦИЯ ========
+        const hasSaved = loadState();
+        if (hasSaved && routeStarted) {
+            btnStart.classList.add('hidden');
+            routeActions.classList.remove('hidden');
+        } else {
+            resetState();
+        }
+        updateUI();
+
+        // ======== ОБРАБОТЧИКИ ========
+        btnStart.addEventListener('click', function() {
+            if (routeStarted) return;
+            routeStarted = true;
+            btnStart.classList.add('hidden');
+            routeActions.classList.remove('hidden');
+            updateUI();
+        });
+
+        btnSave.addEventListener('click', function() {
+            alert('Прогресс сохранён!');
+        });
+
+        btnReset.addEventListener('click', function() {
+            if (confirm('Вы уверены, что хотите сбросить весь прогресс маршрута?')) {
+                resetState();
+            }
+        });
+
+        btnFinish.addEventListener('click', function() {
+            if (this.disabled) return;
+            startCelebration();
+        });
+
+        // ======== ОТМЕТКА В МОДАЛКЕ ========
+        function toggleVisit() {
+            if (!routeStarted) {
+                alert('Сначала начните маршрут (кнопка "Начать маршрут")');
+                return;
+            }
+            const idx = currentModalIndex;
+            visited[idx] = !visited[idx];
+            updateUI();
+        }
+
+        modalVisitBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleVisit();
+        });
+
+        // ======== ГЕНЕРАЦИЯ КАРТОЧЕК ========
+        stopsData.forEach((stop, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-index', index);
+            card.onclick = function() { openModal(index); };
+            const previewImage = stop.images && stop.images.length > 0 ? stop.images[0] : 'https://placehold.co/600x400/EEF2F6/1E293B?text=Нет+фото';
+            card.innerHTML = `
+                <img class="card-img" src="${previewImage}" alt="${stop.title}" />
+                <div class="card-body">
+                    <h3>${stop.title}</h3>
+                    <p>${stop.shortDesc}</p>
+                    <span class="tag">${stop.tag}</span>
+                </div>
+                <div class="visited-badge">✓ Посещено</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // ======== МОДАЛЬНОЕ ОКНО ========
+        let imagesArray = [];
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentModalIndex = index;
+            const data = stopsData[index];
+            if (!data) return;
+
+            imagesArray = data.images || [];
+            if (imagesArray.length === 0) {
+                imagesArray = ['https://placehold.co/600x400/EEF2F6/1E293B?text=Нет+фото'];
+            }
+            currentImageIndex = 0;
+
+            modalTitle.textContent = data.title;
+
+            let photoCredit = 'Фото Кирилл Богучаров';
+            if (index === 5) photoCredit = 'Фото МБОУ СОШ №3';
+            else if (index === 6) photoCredit = 'Фото МБОУ СОШ №1';
+
+            modalBody.innerHTML = `
+                <p><strong>Историческая справка.</strong> ${data.history}</p>
+                <p><strong>Что посмотреть сегодня.</strong> ${data.whatSee}</p>
+                <p style="font-style: italic; font-size: 0.85rem; color: #64748b; margin-top: 12px; text-align: right;">${photoCredit}</p>
+            `;
+
+            const isVisited = visited[index];
+            modalVisitBtn.textContent = isVisited ? 'Посещено ✓' : 'Отметить как посещённое';
+            modalVisitBtn.classList.toggle('visited', isVisited);
+
+            updateSlider(true);
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateSlider(instant = false) {
+            if (!imagesArray.length) return;
+            if (instant) {
+                modalImage.src = imagesArray[currentImageIndex];
+                modalImage.alt = `Фото ${currentImageIndex+1} из ${imagesArray.length}`;
+                modalImage.classList.remove('fade-out');
+            } else {
+                modalImage.classList.add('fade-out');
+                setTimeout(() => {
+                    modalImage.src = imagesArray[currentImageIndex];
+                    modalImage.alt = `Фото ${currentImageIndex+1} из ${imagesArray.length}`;
+                    modalImage.classList.remove('fade-out');
+                }, 300);
+            }
+
+            sliderDots.innerHTML = '';
+            for (let i = 0; i < imagesArray.length; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (i === currentImageIndex ? ' active' : '');
+                dot.setAttribute('data-index', i);
+                dot.onclick = function() {
+                    if (i === currentImageIndex) return;
+                    currentImageIndex = i;
+                    updateSlider(false);
+                };
+                sliderDots.appendChild(dot);
+            }
+        }
+
+        function changeImage(direction) {
+            if (!imagesArray.length) return;
+            currentImageIndex = (currentImageIndex + direction + imagesArray.length) % imagesArray.length;
+            updateSlider(false);
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft' && modalOverlay.classList.contains('active')) {
+                changeImage(-1);
+                e.preventDefault();
+            }
+            if (e.key === 'ArrowRight' && modalOverlay.classList.contains('active')) {
+                changeImage(1);
+                e.preventDefault();
+            }
+        });
+
+        // ======== КНОПКА "НАВЕРХ" ========
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btnTop.classList.add('visible');
+            } else {
+                btnTop.classList.remove('visible');
+            }
+        });
+
+        btnTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ======== КОНФЕТТИ ========
+        const canvas = document.getElementById('confettiCanvas');
+        const ctx = canvas.getContext('2d');
+        let confettiPieces = [];
+        let animationId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class ConfettiPiece {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.w = 6 + Math.random() * 8;
+                this.h = 4 + Math.random() * 6;
+                this.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+                this.speed = 2 + Math.random() * 4;
+                this.rotation = 0;
+                this.rotSpeed = (Math.random() - 0.5) * 0.1;
+                this.drift = (Math.random() - 0.5) * 2;
+            }
+            update() {
+                this.y += this.speed;
+                this.x += this.drift + Math.sin(this.y * 0.02) * 0.8;
+                this.rotation += this.rotSpeed;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
+                ctx.restore();
+            }
+            isOffScreen() {
+                return this.y > canvas.height + 50;
+            }
+        }
+
+        function startCelebration() {
+            celebrationOverlay.classList.add('active');
+            if (animationId) cancelAnimationFrame(animationId);
+            confettiPieces = [];
+            for (let i = 0; i < 150; i++) {
+                confettiPieces.push(new ConfettiPiece());
+            }
+            animateConfetti();
+            setTimeout(() => {
+                if (animationId) cancelAnimationFrame(animationId);
+                confettiPieces = [];
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }, 6000);
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let alive = false;
+            for (let piece of confettiPieces) {
+                piece.update();
+                piece.draw();
+                if (!piece.isOffScreen()) alive = true;
+            }
+            if (alive) {
+                animationId = requestAnimationFrame(animateConfetti);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animationId = null;
+            }
+        }
+
+        function closeCelebration() {
+            celebrationOverlay.classList.remove('active');
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            confettiPieces = [];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+
+</body>
+</html>
